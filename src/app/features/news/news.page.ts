@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import { RouterLink } from '@angular/router';
+import {LoggerService} from '../../core/services/logger.service';
 
 @Component({
   standalone: true,
@@ -50,4 +51,9 @@ import { RouterLink } from '@angular/router';
     </section>
   `
 })
-export class NewsPage {}
+export class NewsPage {
+  private logger = inject(LoggerService)
+
+  constructor() {
+    this.logger.info('HomePage constructed')
+  }}

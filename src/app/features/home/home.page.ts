@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
+import {LoggerService} from '../../core/services/logger.service';
 
 @Component({
   standalone: true,
@@ -30,4 +31,10 @@ import { Component } from '@angular/core';
     </section>
   `
 })
-export class HomePage {}
+export class HomePage {
+  private logger = inject(LoggerService)
+
+  constructor() {
+    this.logger.info('HomePage constructed')
+  }
+}

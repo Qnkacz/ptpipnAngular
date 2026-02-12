@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import {Component, inject} from '@angular/core';
+import {NavigationEnd, Router, RouterLink, RouterLinkActive} from '@angular/router';
 import {HlmButton} from '@spartan-ng/helm/button';
+import {LoggerService} from '../core/services/logger.service';
+import {filter} from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -33,4 +35,17 @@ import {HlmButton} from '@spartan-ng/helm/button';
     </header>
   `
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+  private router = inject(Router)
+  private logger = inject(LoggerService)
+
+  constructor() {
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(event => {
+        this.logger.info('Navigation event clicked', {
+          url: event.urlAfterRedirects
+        })
+      })
+  }
+}
