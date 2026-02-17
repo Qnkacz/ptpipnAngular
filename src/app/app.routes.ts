@@ -23,6 +23,12 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./features/conferences/conference-page.component')
             .then(m => m.ConferencePage)
+      },
+      {
+        path: 'knowledgeHub',
+        loadComponent: () =>
+          import('./features/knowledge-bank/knowledge-bank.page')
+            .then(m => m.KnowledgeBasePage)
       }
     ]
   }
