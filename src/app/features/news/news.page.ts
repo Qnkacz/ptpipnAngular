@@ -3,7 +3,6 @@ import { RouterLink } from '@angular/router';
 import {LoggerService} from '../../core/services/logger.service';
 
 @Component({
-  standalone: true,
   imports: [RouterLink],
   template: `
     <section class="space-y-8">

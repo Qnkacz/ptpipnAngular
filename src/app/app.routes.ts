@@ -17,6 +17,12 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./features/news/news.page')
             .then(m => m.NewsPage)
+      },
+      {
+        path: 'conferences',
+        loadComponent: () =>
+          import('./features/conferences/conference-page.component')
+            .then(m => m.ConferencePage)
       }
     ]
   }
